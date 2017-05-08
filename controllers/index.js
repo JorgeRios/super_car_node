@@ -14,6 +14,7 @@ exports.helloworld = (req, res, next)=> {
   })
 }
 
+
 exports.token = (req, res, next)=> {
   let usuario = req.body.usuario;
   console.log("viendo usuario");
@@ -27,11 +28,10 @@ exports.token = (req, res, next)=> {
   });
 }
 
-let makePromise = ()=>{
-  return new Promise((reject, resolve)=> {
-    val = getRows("cars")
-    console.log("vieno cars");
-    console.log(val);
+exports.tokenDelete = (req, res, next)=> {
+  console.log("se quiere deslogear");
+  res.status(200).json({
+    usuario: ""
   });
 }
 
@@ -41,6 +41,12 @@ exports.muscleCars = (req, res, next)=> {
     console.log(typeof(data));
     res.status(200).json({data})
  });
+}
+
+exports.carDetail = (req, res, next)=> {
+  console.log("pidio car detail"+ req.query.id);
+  res.status(200).json({car:"car"});
+
 }
 
 let authLogin = (tabla="usuarios", field="usuario", value="jorge")=> {

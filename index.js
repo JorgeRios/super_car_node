@@ -9,13 +9,7 @@ app.use(bodyParser.json());
 app.use(cors());
 router(app);
 
-
-
 app.listen(port)
-
-
-
-
 
 console.log('escuchando')
 
