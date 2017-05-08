@@ -8,7 +8,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.use(cors());
 router(app);
-
+//solo editando
 app.listen(port)
 
 console.log('escuchando')
