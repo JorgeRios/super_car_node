@@ -37,7 +37,7 @@ exports.tokenDelete = (req, res, next)=> {
 
 exports.muscleCars = (req, res, next)=> {
   getRows("cars").then((data)=> {
-    console.log("viendo data");
+    console.log("viendo data "+ data );
     console.log(typeof(data));
     res.status(200).json({data})
  });
@@ -45,7 +45,11 @@ exports.muscleCars = (req, res, next)=> {
 
 exports.carDetail = (req, res, next)=> {
   console.log("pidio car detail"+ req.query.id);
-  res.status(200).json({car:"car"});
+  id = req.query.id;
+  filterRow("features", "fk_car", id).then((data)=>{
+    console.log("viendo features "+ Object.keys(data));
+    res.status(200).json({"features": data });
+  });
 
 }
 
@@ -90,7 +94,7 @@ let filterRow = (tabla="usuarios", field="usuario", value="jorge")=> {
 	    reject(JSON.stringify({error: "el usuario no existe"}));
 	  } else {
 	    console.log("en el resolve " +JSON.stringify(result, null, 2));
-	    resolve(JSON.stringify(result));
+	    resolve(result);
 	  }
 	});
       }
